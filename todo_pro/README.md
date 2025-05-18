@@ -23,6 +23,6 @@
 - HTML, CSS, JavaScript
 
 ## Setup Instructions
-1. Repository clone karo:  
+1. try Repository clone:  
 ```bash
 git clone https://github.com/Abdulrehmankhan9/Advance_Todo_Django.git
