@@ -26,3 +26,8 @@
 1. try Repository clone:  
 ```bash
 git clone https://github.com/Abdulrehmankhan9/Advance_Todo_Django.git
+models.py	
+forms.py	
+views.py	
+templates
+urls.py
