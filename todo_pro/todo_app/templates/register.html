@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Register page</h1>
-    <form action="" method="POST">
+    <!-- <form action="" method="POST">
         {% csrf_token %}
         {% for field in form %}
             <div>
@@ -16,6 +16,11 @@
             </div>
         {% endfor %}
         <button type="submit">Register</button>
-    </form>
+    </form> -->
+    <form method="POST">
+    {% csrf_token %}
+    {{ formX.as_p }}
+    <button type="submit">Register</button>
+</form>
 </body>
 </html>

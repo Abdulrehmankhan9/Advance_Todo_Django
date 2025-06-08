@@ -15,22 +15,24 @@ def register_view(request):
             form.save
             return redirect('login')
         else:
-         form = RegisterForm()
-    context = {
-        'form':form
-    }
-    return render(request, 'register.html', context)
+            return HttpResponse('Invalid Information, GO BACK')
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'formX': form})
+
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST['usernameX']
+        password = request.POST['passwordX']
         user = authenticate(request, username=username, password=password)
         if user:
             login(request,user)
+            return redirect('home')
         else:
-            return HttpResponse('User Not Found')    
-    return render(request, 'login.html')
+            return HttpResponse('User Not Found')
+    else:
+     return render(request, 'login.html')
 
 def logout_view(request):
     return HttpResponse("Logout")
