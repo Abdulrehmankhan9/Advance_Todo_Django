@@ -2,11 +2,20 @@ from django.shortcuts import render, HttpResponse, redirect
 from . forms import RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from .models import Task
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    data = Task.objects.all()
+    return render(request, 'home.html', {'data':data})
+
+def add(request):
+    if request.method == 'POST':
+        tododata = request.POST['add']
+        Task.objects.create(title=tododata)
+        return redirect('home')
+    else: 
+        return render(request, 'home.html')
 
 def register_view(request):
     if request.method == "POST":
