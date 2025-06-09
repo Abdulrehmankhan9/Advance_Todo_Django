@@ -12,7 +12,7 @@ def register_view(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save
+            form.save()
             return redirect('login')
         else:
             return HttpResponse('Invalid Information, GO BACK')
@@ -23,9 +23,9 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['usernameX']
-        password = request.POST['passwordX']
-        user = authenticate(request, username=username, password=password)
+        usernameY = request.POST['usernameX']
+        passwordY = request.POST['passwordX']
+        user = authenticate(request, username=usernameY, password=passwordY) 
         if user:
             login(request,user)
             return redirect('home')
@@ -34,7 +34,9 @@ def login_view(request):
     else:
      return render(request, 'login.html')
 
+@login_required
 def logout_view(request):
+    logout(request)
     return HttpResponse("Logout")
 
 def delete_task(request, id):
